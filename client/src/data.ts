@@ -2,6 +2,7 @@ import { Product } from "./types/Product"
 
 export const sampleProducts: Product[] = [
     {
+      id: 'sss-h',
       name: 'Nike Slim shirt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
