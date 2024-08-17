@@ -16,6 +16,7 @@ import ProductPage from './pages/ProductPage';
 import NotFoundPage from './pages/NotFoundPage'; // Import the NotFoundPage component
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { StoreProvider } from './Store';
 
 
 // Define your router with a fallback route
@@ -37,11 +38,13 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <StoreProvider>
     <HelmetProvider>
     <QueryClientProvider client={queryClient}>
      <RouterProvider router={router} />
      <ReactQueryDevtools initialIsOpen={false} />
    </QueryClientProvider>
   </HelmetProvider>
+  </StoreProvider>
   </StrictMode>
 );
