@@ -2,8 +2,11 @@
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 //import './App.css'
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
-import { sampleProducts } from './data'
+
+
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Outlet } from 'react-router-dom'
+
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -28,7 +31,7 @@ function App() {
       </header>
       <main>
         <Container className='mt-3'>
-        
+          <Outlet />
         </Container>
       </main>
       <footer>

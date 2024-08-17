@@ -8,22 +8,24 @@ import {
 } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App.tsx';
+import App from './App';
 import './index.css';
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
+import NotFoundPage from './pages/NotFoundPage'; // Import the NotFoundPage component
 
-// Create a simple NotFound component for unmatched routes
-function NotFound() {
-  return <h1>404 - Page Not Found</h1>;
-}
 
 // Define your router with a fallback route
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      {/*<Route path="dashboard" element={<Dashboard />} />*/}
-      {/* ... other routes */}
-      {/* Fallback route for 404 errors */}
-      <Route path="*" element={<NotFound />} />
+      <Route index={true} element={<HomePage />} />
+      <Route path="product/:slug" element={<ProductPage />} />
+      {/* Add other routes here */}
+      {/* <Route path="dashboard" element={<Dashboard />} /> */}
+      <Route path="*" element={<NotFoundPage />} />
+      {/* Catch-all route for undefined paths */}
+      
     </Route>
   )
 );
