@@ -13,6 +13,10 @@ import './index.css';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import NotFoundPage from './pages/NotFoundPage'; // Import the NotFoundPage component
+import axios from 'axios';
+
+axios.defaults.baseURL =
+  process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
 
 
 // Define your router with a fallback route
