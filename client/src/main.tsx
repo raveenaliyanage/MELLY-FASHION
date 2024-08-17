@@ -14,10 +14,8 @@ import './index.css';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import NotFoundPage from './pages/NotFoundPage'; // Import the NotFoundPage component
-import axios from 'axios';
-
-axios.defaults.baseURL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 
 // Define your router with a fallback route
@@ -35,10 +33,15 @@ const router = createBrowserRouter(
   )
 );
 
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-  <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+     <RouterProvider router={router} />
+     <ReactQueryDevtools initialIsOpen={false} />
+   </QueryClientProvider>
   </HelmetProvider>
   </StrictMode>
 );
