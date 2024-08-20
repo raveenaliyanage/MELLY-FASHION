@@ -7,7 +7,6 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import './index.css';
@@ -22,7 +21,9 @@ import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import ShippingAddressPage from './pages/ShippingAddressPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
-
+import ProtectedRoute from './components/ProtectedRoute';
+import PlaceOrderPage from './pages/PlaceOrderPage';
+import OrderPage from './pages/OrderPage';
 
 // Define your router with a fallback route
 const router = createBrowserRouter(
@@ -33,8 +34,13 @@ const router = createBrowserRouter(
       <Route path='cart' element={<CartPage />} />
       <Route path='signin' element={<SigninPage />} />
       <Route path='signup' element={<SignupPage />} />
-      <Route path='shipping' element={<ShippingAddressPage />} />
-      <Route path='payment' element={<PaymentMethodPage />} />
+      <Route path="" element={<ProtectedRoute />}>
+        <Route path='shipping' element={<ShippingAddressPage />} />
+        <Route path='payment' element={<PaymentMethodPage />} />
+        <Route path="placeorder" element={<PlaceOrderPage />} />
+        <Route path="/order/:id" element={<OrderPage />} />
+      </Route>
+      
       {/* Add other routes here */}
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       <Route path="*" element={<NotFoundPage />} />
