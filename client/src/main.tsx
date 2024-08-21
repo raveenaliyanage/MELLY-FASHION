@@ -24,6 +24,8 @@ import PaymentMethodPage from './pages/PaymentMethodPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import PlaceOrderPage from './pages/PlaceOrderPage';
 import OrderPage from './pages/OrderPage';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import OrderHistoryPage from './pages/OrderHistoryPage';
 
 // Define your router with a fallback route
 const router = createBrowserRouter(
@@ -39,6 +41,7 @@ const router = createBrowserRouter(
         <Route path='payment' element={<PaymentMethodPage />} />
         <Route path="placeorder" element={<PlaceOrderPage />} />
         <Route path="/order/:id" element={<OrderPage />} />
+        <Route path="/orderhistory" element={<OrderHistoryPage />} />
       </Route>
       
       {/* Add other routes here */}
@@ -55,12 +58,14 @@ const queryClient = new QueryClient()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <StoreProvider>
-    <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-     <RouterProvider router={router} />
-     <ReactQueryDevtools initialIsOpen={false} />
-   </QueryClientProvider>
-  </HelmetProvider>
+    <PayPalScriptProvider options={{ 'clientId': 'AaP27Gor7YDm_ZK4u7tnI4QmRmIwlr_gRB2udVgNilJ83mjnKRfaaiCSHPY-B9YLs6Fg3tobfrymyvri' }} deferLoading={true}>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </HelmetProvider>
+      </PayPalScriptProvider>
   </StoreProvider>
   </StrictMode>
 );
