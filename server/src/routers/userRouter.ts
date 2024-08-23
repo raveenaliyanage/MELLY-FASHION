@@ -2,10 +2,11 @@ import express, {Request, Response} from 'express'
 import asyncHandler from 'express-async-handler'
 import { UserModel} from '../models/userModel'
 import bcrypt from 'bcryptjs'
-import {generateToken} from '../utils'
+import {generateToken, isAuth } from '../utils'
 import { User } from '../models/userModel'
 
 export const userRouter = express.Router()
+//POST/api/users/signin
 userRouter.post('/signin',
     asyncHandler(async (req: Request, res: Response) => {
       const user = await UserModel.findOne({ email: req.body.email })
@@ -41,5 +42,31 @@ userRouter.post('/signin',
         isAdmin: user.isAdmin,
         token: generateToken(user),
       })
+    })
+  )
+
+  userRouter.put(
+    '/profile',
+    isAuth,
+    asyncHandler(async (req: Request, res: Response) => {
+      const user = await UserModel.findById(req.user._id)
+      if (user) {
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        if (req.body.password) {
+          user.password = bcrypt.hashSync(req.body.password, 8)
+        }
+        const updatedUser = await user.save()
+        res.send({
+          _id: updatedUser._id,
+          name: updatedUser.name,
+          email: updatedUser.email,
+          isAdmin: updatedUser.isAdmin,
+          token: generateToken(updatedUser),
+        })
+        return
+      }
+  
+      res.status(404).json({ message: 'User not found' })
     })
   )
