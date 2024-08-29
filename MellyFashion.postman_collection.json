@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "b5b8e8f3-2cf0-493e-a8b1-2c553373d03a",
+		"name": "MellyFashion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30028149"
+	},
+	"item": [
+		{
+			"name": "products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/products",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "seed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/seed",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"seed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/users/signin",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjMTMxNWU0N2ExYjAwNTI5ZjNiZTUiLCJuYW1lIjoiSm9lIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyNDY1MTQwNiwiZXhwIjoxNzI3MjQzNDA2fQ.6Xti8b6pRJyUIyfW0UguJDuOE7uZW8GLY3kX-Ik77Og",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjMTMxNWU0N2ExYjAwNTI5ZjNiZTUiLCJuYW1lIjoiSm9lIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyNDY1MTQwNiwiZXhwIjoxNzI3MjQzNDA2fQ.6Xti8b6pRJyUIyfW0UguJDuOE7uZW8GLY3kX-Ik77Og",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderid\":\"66cef14d7682cd616be0c0ab\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/orders/66cef14d7682cd616be0c0ab",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders",
+						"66cef14d7682cd616be0c0ab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ordersMine",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjMTMxNWU0N2ExYjAwNTI5ZjNiZTUiLCJuYW1lIjoiSm9lIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyNDY1MTc5MiwiZXhwIjoxNzI3MjQzNzkyfQ.ias2B1pG1Cfj54NYosPcAsOvz8UAmxOhGAQ8Rg8KB4I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmNjMTMxNWU0N2ExYjAwNTI5ZjNiZTUiLCJuYW1lIjoiSm9lIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyNDY1MTc5MiwiZXhwIjoxNzI3MjQzNzkyfQ.ias2B1pG1Cfj54NYosPcAsOvz8UAmxOhGAQ8Rg8KB4I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userid\":\"66ceef4c7682cd616be0c08d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/orders/mine",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"orders",
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paypal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://melly-fashion-server-2cbd2d9a542e.herokuapp.com/api/keys/paypal",
+					"protocol": "https",
+					"host": [
+						"melly-fashion-server-2cbd2d9a542e",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"keys",
+						"paypal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
